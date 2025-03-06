@@ -41,6 +41,6 @@ Interfaz de Usuario:  Este módulo se encargará de la experiencia del usuario. 
  
 - Base de datos: Firebase Realtime Database.
  
-- Control de versiones: Git y GitHub.
+- Control de versiones: GitHub.
 
 
