@@ -44,3 +44,5 @@ Interfaz de Usuario:  Este módulo se encargará de la experiencia del usuario. 
 - Control de versiones: GitHub.
 
 
+*Flujo*
+Inicio de Sesión/Registro,Navegación Principal,Interacción con Módulos, Procesamiento de Datos, Notificaciones y Cierre de Sesión.
