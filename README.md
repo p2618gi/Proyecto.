@@ -3,11 +3,12 @@
 Ginna Esmeralda Paez Lancheros , Ronald Armando Gutierres Murcia.
 
 *Titulo*
-Aplicacion De Interaccion Unisangil.
+Aplicación Móvil para la Comunicación, Gestión de Eventos, Préstamos y Recursos Académicos en UNISANGIL.
 
 *Definision de Modulo de sistema* 
 
-Desarrollar una aplicación móvil para una universidad que facilite la comunicación, la colaboración y el acceso a información y recursos para estudiantes, profesores y personal administrativo.
+Desarrollar una aplicación móvil utilizando MIT App Inventor que facilita la comunicación, la colaboración y el acceso a información y recursos académicos para estudiantes, profesores y personal administrativo de la universidad.
+
 
 *Modulo principales*
 
@@ -37,7 +38,8 @@ Interfaz de Usuario:  Este módulo se encargará de la experiencia del usuario. 
 *Tegnologias*
 
  
-- Lenguaje de programación: (JavaScript) para el desarrollo de la aplicación móvil.
+- Lenguaje de programación: MIT App Inventor 
+ para el desarrollo de la aplicación móvil.
  
 - Base de datos: Firebase Realtime Database.
  
@@ -45,4 +47,19 @@ Interfaz de Usuario:  Este módulo se encargará de la experiencia del usuario. 
 
 
 *Flujo*
-Inicio de Sesión/Registro,Navegación Principal,Interacción con Módulos, Procesamiento de Datos, Notificaciones y Cierre de Sesión.
+
+*Inicio de sesión/Registro:
+Los usuarios se registrarán y seleccionarán su rol.
+Se almacena la información en Firebase.
+*Navegación principal:
+Menú principal con acceso a los módulos.
+*Interacción con los Módulos:
+Los usuarios acceden a eventos, noticias, préstamos y recursos.
+Se gestionan solicitudes de préstamos y grupos de estudio.
+*Procesamiento de datos:
+Información almacenada en Firebase.
+Filtrado y consulta de datos.
+*Notificaciones:
+Alertas para eventos, avisos y vencimientos de préstamos.
+*Cierre de sesión:
+opción para salir de la cuenta.
