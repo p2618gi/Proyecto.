@@ -1,0 +1,636 @@
+Acontinuacion adjuntamos el codigo del desarrollo de la aplicacion movile en el etorno Reac Native.
+
+______Pantalla de Inicio______
+
+import { Image } from 'expo-image';
+import { StyleSheet, TextInput } from 'react-native';
+
+import { HelloWave } from '@/components/HelloWave';
+import ParallaxScrollView from '@/components/ParallaxScrollView';
+import { ThemedText } from '@/components/ThemedText';
+import { ThemedView } from '@/components/ThemedView';
+
+export default function HomeScreen() {
+  return (
+    <ParallaxScrollView
+      headerBackgroundColor={{  light: '#DCEEFF', dark: '#3B5774' }}
+      headerImage={
+
+        <><Image
+          source={require('@/assets/images/univ.jpg')}
+          style={styles.backgroundImage}
+          contentFit="cover" /><Image
+            source={require('@/assets/images/logo.png')}
+            style={styles.Logo} /></>
+      }>
+      
+      <ThemedView style={styles.titleContainer}>
+        <ThemedText type="title">Bienvenido a UNISANGIL</ThemedText>
+        <HelloWave />
+      </ThemedView>
+      <ThemedView style={styles.stepContainer}>
+        <ThemedText type="subtitle">En este espacio encontraras todo sobre nuestra sede chiquinquira.</ThemedText>
+      </ThemedView>
+      <ThemedView style={styles.stepContainer}>
+        <ThemedText type="defaultSemiBold">Para realizar el ingreso llena los siguientes campos.</ThemedText>
+      </ThemedView>
+      <ThemedView style={styles.stepContainer}>
+        <ThemedText type="defaultSemiBold">Ingresa tu Correo electronico institucional:</ThemedText> 
+
+        <TextInput
+            style={[styles.input, { marginTop: 44 }]}
+            placeholder="correo@unisangil.edu.co"
+            keyboardType="email-address"
+        />
+         
+      </ThemedView>
+    </ParallaxScrollView>
+  );
+}
+
+const styles = StyleSheet.create({
+  titleContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  
+  stepContainer: {
+    gap: 8,
+    marginBottom: 28,
+  },
+  backgroundImage: {
+    ...StyleSheet.absoluteFillObject,
+    height: 250,
+    opacity: 0.6,
+  },
+
+  Logo: {
+    height: 68,
+    width: 250,
+    bottom:0,
+    left: 0,
+    position: 'absolute',
+  },
+  stepContainer1: {
+    gap: 8,
+    marginBottom: 48,
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 8,
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    backgroundColor: 'white',
+  },
+});
+
+
+______Menu__________
+
+
+import { Image } from 'expo-image';
+import { Pressable, StyleSheet } from 'react-native';
+
+import ParallaxScrollView from '@/components/ParallaxScrollView';
+import { ThemedText } from '@/components/ThemedText';
+import { ThemedView } from '@/components/ThemedView';
+import { router } from 'expo-router';
+
+export default function TabTwoScreen() {
+  return (
+    <ParallaxScrollView
+      headerBackgroundColor={{ light: '#DCEEFF', dark: '#3B5774' }}
+      headerImage={
+
+       <Image
+                source={require('@/assets/images/fond.jpg')}
+                style={styles.backgroundImage}
+                contentFit="cover" />
+      }>
+         <ThemedView style={styles.titleContainer}>
+        <ThemedText type="title">Menú</ThemedText>
+      </ThemedView>
+
+      <Pressable style={styles.menuItem} onPress={() => router.push('/bienestar')}>
+        <Image source={require('@/assets/images/bn.png')} style={styles.icon} />
+        <ThemedText style={styles.buttonText}>Bienestar Institucional</ThemedText>
+      </Pressable>
+
+      <Pressable style={styles.menuItem} onPress={() => router.push('/semilleros')}>
+        <Image source={require('@/assets/images/sm.png')} style={styles.icon} />
+        <ThemedText style={styles.buttonText}>Semilleros</ThemedText>
+      </Pressable>
+
+      <Pressable style={styles.menuItem} onPress={() => router.push('/recursos')}>
+        <Image source={require('@/assets/images/rc.png')} style={styles.icon} />
+        <ThemedText style={styles.buttonText}>Recursos</ThemedText>
+      </Pressable>
+
+      <Pressable style={styles.menuItem} onPress={() => router.push('/eventos')}>
+        <Image source={require('@/assets/images/nt.png')} style={styles.icon} />
+        <ThemedText style={styles.buttonText}>Eventos</ThemedText>
+      </Pressable>
+    </ParallaxScrollView>
+  );
+}
+
+const styles = StyleSheet.create({
+  backgroundImage: {
+    ...StyleSheet.absoluteFillObject,
+    height: 300,
+    opacity: 0.6,
+  },
+  titleContainer: {
+    flexDirection: 'row',
+    gap: 8,
+    padding: 20,
+    justifyContent: 'center',
+  },
+  menuItem: {
+    backgroundColor: '#E0F0FF',
+    padding: 20,
+    marginBottom: 15,
+    borderRadius: 20,
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 2,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  icon: {
+    width: 80,
+    height: 40,
+    marginRight: 10,
+  },
+  buttonText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#333',
+  },
+});
+
+
+
+______ android/ios_________
+
+
+import { Tabs } from 'expo-router';
+import React from 'react';
+import { Platform } from 'react-native';
+
+import { HapticTab } from '@/components/HapticTab';
+import { IconSymbol } from '@/components/ui/IconSymbol';
+import TabBarBackground from '@/components/ui/TabBarBackground';
+import { Colors } from '@/constants/Colors';
+import { useColorScheme } from '@/hooks/useColorScheme';
+
+export default function TabLayout() {
+  const colorScheme = useColorScheme();
+
+  return (
+    <Tabs
+      screenOptions={{
+        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        headerShown: false,
+        tabBarButton: HapticTab,
+        tabBarBackground: TabBarBackground,
+        tabBarStyle: Platform.select({
+          ios: {
+            // Use a transparent background on iOS to show the blur effect
+            position: 'absolute',
+          },
+          default: {},
+        }),
+      }}>
+      <Tabs.Screen
+        name="index"
+        options={{
+          title: 'Home',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="explore"
+        options={{
+          title: 'Go into',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+        }}
+      />
+    </Tabs>
+  );
+}
+
+
+_______Layout________
+
+
+
+import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
+import { useFonts } from 'expo-font';
+import { Stack } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
+import 'react-native-reanimated';
+
+import { useColorScheme } from '@/hooks/useColorScheme';
+
+export default function RootLayout() {
+  const colorScheme = useColorScheme();
+  const [loaded] = useFonts({
+    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+  });
+
+  if (!loaded) {
+  
+    return null;
+  }
+
+  return (
+    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+      <Stack>
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="+not-found" />
+      </Stack>
+      <StatusBar style="auto" />
+    </ThemeProvider>
+  );
+}
+
+
+
+_______ Validacion de pantallas__________
+
+
+
+import { Link, Stack } from 'expo-router';
+import { StyleSheet } from 'react-native';
+
+import { ThemedText } from '@/components/ThemedText';
+import { ThemedView } from '@/components/ThemedView';
+
+export default function NotFoundScreen() {
+  return (
+    <>
+      <Stack.Screen options={{ title: 'Oops!' }} />
+      <ThemedView style={styles.container}>
+        <ThemedText type="title">This screen does not exist.</ThemedText>
+        <Link href="/" style={styles.link}>
+          <ThemedText type="link">Go to home screen!</ThemedText>
+        </Link>
+      </ThemedView>
+    </>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 20,
+  },
+  link: {
+    marginTop: 15,
+    paddingVertical: 15,
+  },
+});
+
+
+__________Pantalla bienestar______
+
+
+import { Image } from 'expo-image';
+import { Pressable, ScrollView, StyleSheet } from 'react-native';
+
+import { ThemedText } from '@/components/ThemedText';
+import { router } from 'expo-router';
+
+export default function BienestarScreen() {
+  return (
+    <ScrollView style={styles.container}>
+      <Image
+        source={require('@/assets/images/lgbn.jpg')}
+        style={styles.headerImage}
+        contentFit="cover"
+      />
+
+      <ThemedText style={styles.title}>Bienestar Institucional</ThemedText>
+
+      <ThemedText style={styles.description}>
+        En esta sección encontrarás toda la información relacionada con los programas y actividades
+        de bienestar institucional, orientados al desarrollo integral de nuestra comunidad.
+      </ThemedText>
+
+      <Pressable style={styles.menuItem} onPress={() => router.push('/enfermeria')}>
+        <ThemedText style={styles.buttonText}>Enfermería</ThemedText>
+      </Pressable>
+
+      <Pressable style={styles.menuItem} onPress={() => router.push('/prestamos')}>
+        <ThemedText style={styles.buttonText}>Recursos</ThemedText>
+      </Pressable>
+
+      <Pressable style={styles.exitButton} onPress={() => router.push('/explore')}>
+        <ThemedText style={styles.buttonText}>Volver</ThemedText>
+      </Pressable>
+    </ScrollView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'black',
+  },
+  headerImage: {
+    width: '100%',
+    height: 100,
+  },
+  title: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginTop: 20,
+    marginBottom: 10,
+    color: 'white',
+  },
+  description: {
+    fontSize: 20,
+    marginHorizontal: 20,
+    marginBottom: 20,
+    color: '#cccccc',
+    textAlign: 'center',
+  },
+  menuItem: {
+    backgroundColor: '#F0F9FF',
+    padding: 20,
+    marginHorizontal: 20,
+    marginBottom: 15,
+    borderRadius: 12,
+    shadowColor: 'black',
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 2,
+    alignItems: 'center',
+  },
+  buttonText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: 'black',
+  },
+  exitButton: {
+    marginTop: 30,
+    backgroundColor: '#F0F9FF',
+    padding: 16,
+    marginHorizontal: 100,
+    borderRadius: 12,
+    alignItems: 'center',
+  },
+});
+
+
+
+_________ Pantallas Eventos_________
+
+
+import { useNavigation } from '@react-navigation/native';
+import { Image } from 'expo-image';
+import { ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
+
+import { ThemedText } from '@/components/ThemedText';
+import { ThemedView } from '@/components/ThemedView';
+
+export default function EventosScreen() {
+  const navigation = useNavigation();
+
+  return (
+    <ScrollView contentContainerStyle={styles.container}>
+      <Image
+        source={require('@/assets/images/leve.jpg')} 
+        style={styles.headerImage}
+        contentFit="cover"
+      />
+
+      <ThemedView style={styles.content}>
+        <ThemedText type="title" style={styles.title}>
+          Eventos y Noticias
+        </ThemedText>
+
+        <ThemedText style={styles.description}>
+          En esta sección encontrarás información actualizada sobre los eventos, actividades, noticias
+          y avisos importantes relacionados con la vida universitaria. Mantente al tanto de todo lo que
+          ocurre en tu institución y participa activamente en las iniciativas que se promueven.
+        </ThemedText>
+
+        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.volverButton}>
+          <ThemedText style={styles.VButtonText}>Volver</ThemedText>
+        </TouchableOpacity>
+      </ThemedView>
+    </ScrollView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    paddingBottom: 40,
+    backgroundColor: '#F0F9FF',
+  },
+  headerImage: {
+    width: '100%',
+    height: 140,
+  },
+  content: {
+    padding: 20,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginBottom: 12,
+  },
+  description: {
+    fontSize: 16,
+    lineHeight: 24,
+    color: 'white',
+    textAlign: 'justify',
+    marginBottom: 30,
+  },
+  volverButton: {
+    marginTop: 20,
+    backgroundColor: 'white',
+    paddingVertical: 12,
+    paddingHorizontal: 30,
+    borderRadius: 8,
+    alignSelf: 'center',
+  },
+  VButtonText: {
+    color: 'black',
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
+});
+
+
+_______ Recursos _________
+
+
+import { useNavigation } from '@react-navigation/native';
+import { Image } from 'expo-image';
+import { ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
+
+import { ThemedText } from '@/components/ThemedText';
+import { ThemedView } from '@/components/ThemedView';
+
+export default function RecursosScreen() {
+  const navigation = useNavigation();
+
+  return (
+    <ScrollView contentContainerStyle={styles.container}>
+      <Image
+        source={require('@/assets/images/lre.jpg')}
+        style={styles.headerImage}
+        contentFit="cover"
+      />
+
+      <ThemedView style={styles.content}>
+        <ThemedText type="title" style={styles.title}>
+          Espacio de Recursos
+        </ThemedText>
+
+        <ThemedText style={styles.description}>
+          En esta sección, los estudiantes podrán compartir conocimientos,
+          documentos, enlaces y materiales útiles relacionados con sus intereses académicos.
+          Este espacio busca facilitar la colaboración y el acceso a recursos entre compañeros
+          que cursan materias afines o pertenecen a la misma sede, promoviendo así una experiencia de
+          aprendizaje más personalizada y conectada.
+        </ThemedText>
+
+        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+          <ThemedText style={styles.backButtonText}>Volver</ThemedText>
+        </TouchableOpacity>
+      </ThemedView>
+    </ScrollView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    paddingBottom: 40,
+    backgroundColor: '#F0F9FF',
+  },
+  headerImage: {
+    width: '100%',
+    height: 180,
+  },
+  content: {
+    padding: 20,
+    backgroundColor: '#F0F9FF',
+  },
+  title: {
+    marginBottom: 12,
+    color: 'black', 
+    textAlign: 'center',
+    fontSize: 24,
+    fontWeight: 'bold',
+  },
+  description: {
+    fontSize: 16,
+    lineHeight: 24,
+    color: 'black', 
+    textAlign: 'justify',
+    marginBottom: 30,
+  },
+  backButton: {
+    marginTop: 20,
+    backgroundColor: 'black',
+    paddingVertical: 12,
+    paddingHorizontal: 30,
+    borderRadius: 8,
+    alignSelf: 'center',
+  },
+  backButtonText: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
+});
+
+
+______ Semilleros _____
+
+import { useNavigation } from '@react-navigation/native';
+import { Image } from 'expo-image';
+import { ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
+
+import { ThemedText } from '@/components/ThemedText';
+import { ThemedView } from '@/components/ThemedView';
+
+export default function SemillerosScreen() {
+  const navigation = useNavigation();
+
+  return (
+    <ScrollView contentContainerStyle={styles.container}>
+      <Image
+        source={require('@/assets/images/lsm.jpg')}
+        style={styles.headerImage}
+        contentFit="cover"
+      />
+
+      <ThemedView style={styles.content}>
+        <ThemedText type="title" style={styles.title}>
+          Bienvenido a Semilleros
+        </ThemedText>
+
+        <ThemedText style={styles.description}>
+          Un semillero de investigación es un espacio de formación en el que los estudiantes, guiados por docentes, exploran temas de su interés,
+          desarrollan habilidades investigativas y participan en proyectos académicos o científicos.
+        </ThemedText>
+
+        {/* Botón Volver */}
+        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+          <ThemedText style={styles.backButtonText}>Volver</ThemedText>
+        </TouchableOpacity>
+      </ThemedView>
+    </ScrollView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    paddingBottom: 40,
+    backgroundColor: '#F0F9FF',
+  },
+  headerImage: {
+    width: '100%',
+    height: 140,
+  },
+  content: {
+    padding: 20,
+  },
+  title: {
+    marginBottom: 12,
+    textAlign: 'center',
+  },
+  description: {
+    fontSize: 16,
+    lineHeight: 24,
+    color: 'white',
+    textAlign: 'justify',
+    marginBottom: 30,
+  },
+  backButton: {
+    marginTop: 30,
+    backgroundColor: '#E0F0FF', 
+    padding: 16,
+    marginHorizontal: 100,
+    borderRadius: 12,
+    alignItems: 'center',
+
+    },
+  backButtonText: {
+    color: 'black',
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
+});
