@@ -9,7 +9,7 @@ Desarrollar una aplicación móvil utilizando React Native permite a los desarro
 
 Modulo principales
 
-Autenticación y Gestión de Usuarios: Este módulo gestionará el registro, inicio de sesión, roles y permisos de los usuarios (estudiantes, profesores, personal administrativo). Gestión de Datos: Este módulo será el corazón de la aplicación, responsable del almacenamiento y gestión de toda la información mediante el uso de bases de datos (Firebase Firestore) y framework EXPO.
+Autenticación y Gestión de Usuarios: Este módulo gestionará el  inicio de sesión, roles y permisos de los usuarios (estudiantes, profesores, personal administrativo). Gestión de Datos: Este módulo será el corazón de la aplicación, responsable del almacenamiento y gestión de toda la información mediante el uso de bases de datos (Firebase Firestore) y framework EXPO.
 
 Eventos: Detalles del evento, fecha, hora, ubicación, etc.
 
@@ -41,25 +41,27 @@ Librerías como React Navigation para gestionar la navegación entre pantallas.
 
 Firebase Firestore: Base de datos NoSQL para almacenar y gestionar los datos de tu aplicación en tiempo real.
 
-Firebase Authentication: Para el manejo de inicio de sesión de usuarios (correo electrónico, Google, Facebook, etc.).
+Firebase Authentication: Para el manejo de inicio de sesión de usuarios (correo electrónico, etc.).
 
 Firebase Cloud Messaging (FCM): Para enviar notificaciones push.
 
 Firebase Hosting (opcional): Para alojar algún backend o archivo estático, si es necesario.
 
 Control de versiones: GitHub.
+
 Flujo
 
-Inicio de sesión/Registro
-Los usuarios deben registrarse.
+Inicio de sesión
+
+Los usuarios deben iniciar sesion con el correo institucional.
 
 Almacena la información en Firebase Authentication y, si necesitas más datos (como el rol), guarda esto en Firestore bajo una colección usuarios.
 
 Implementación:
 
-Usa Firebase Authentication para gestionar el inicio de sesión/registro.
+Usa Firebase Authentication para gestionar el inicio de sesión.
 
-Cuando un usuario se registre, crea un documento en Firestore con su información personaly rol .
+Cuando un usuario inicie sesion , se le cargara toda la infomacion disponible en los modulos .
 
 Navegación principal
 Un menú principal con opciones para acceder a los diferentes módulos (eventos, préstamos, grupos, documentacion.)
