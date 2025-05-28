@@ -13,7 +13,9 @@ Desarrollar una aplicación móvil utilizando React Native permite a los desarro
 
 Modulo principales
 
-Autenticación y Gestión de Usuarios: Este módulo gestionará el  inicio de sesión, roles y permisos de los usuarios (estudiantes, profesores, personal administrativo). Gestión de Datos: Este módulo será el corazón de la aplicación, responsable del almacenamiento y gestión de toda la información mediante el uso de bases de datos (Firebase Firestore) y framework EXPO.
+Autenticación y Gestión de Usuarios: Este módulo gestionará el  inicio de sesión de los usuarios (estudiantes, profesores, personal administrativo) mediante su correo electronico. 
+
+Gestión de Datos: Este módulo será el corazón de la aplicación, responsable del almacenamiento y gestión de toda la información mediante el uso de bases de datos (Firebase Firestore) y framework EXPO.
 
 Eventos: Detalles del evento, fecha, hora, ubicación, etc.
 
