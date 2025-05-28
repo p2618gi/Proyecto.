@@ -1,0 +1,12 @@
+El desarrollo de una aplicación móvil con React Native, a partir de su plantilla base, inicia con la generación automática 
+de la estructura del proyecto. Esta plantilla incluye los archivos y carpetas esenciales para construir una aplicación compatible 
+con Android y iOS, generados de manera inmediata al momento de su creación.
+
+Dado que se optó por un enfoque dirigido a desarrolladores principiantes, se utilizó la plantilla básica que React Native ofrece por defecto,
+lo cual permitió contar con una base sólida y funcional desde el inicio del proceso.
+
+A partir de esta estructura inicial, se dio inicio al desarrollo de la aplicación, incorporando progresivamente los elementos de
+la interfaz de usuario, la lógica de negocio y las funcionalidades requeridas.
+
+El resultado final es una aplicación móvil funcional y multiplataforma, con una interfaz amigable y eficiente,
+desarrollada de manera ágil gracias al entorno flexible que proporciona React Native.
