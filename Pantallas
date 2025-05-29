@@ -20,8 +20,6 @@ Gestión de Datos: Este módulo será el corazón de la aplicación, responsable
 
 - Interfaz de Usuario:  Este módulo se encargará de la experiencia del usuario.  Se diseñará una interfaz intuitiva y amigable, con una navegación clara y sencilla. 
  
-- Formularios para la solicitud de préstamos.
- 
 - Sistema de notificaciones push.
 
 
